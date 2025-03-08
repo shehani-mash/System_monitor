@@ -1,0 +1,7 @@
+import tkinter as tk
+import subprocess
+
+def cpu_Usage():
+	result = subprocess.run(["top -bn1"], stdout=subprocess.PIPE, text=True)
+	cpu_line = result.stdout.split("\n")[2]
+	cpu_idle = float(cpu_line.split(",")[3].strip().replce("%id", "").split()[0]) 
